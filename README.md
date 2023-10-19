@@ -1,15 +1,24 @@
 # ros_comm_tools
 
-This ROS package provides a set of communication tools that allow for advanced topic interactions, such as triggering republishing of messages upon specific events.
+This ROS stack provides a collection of communication tools that allow for advanced topic interactions and other functionalities within the ROS ecosystem. 
+
+## Current Structure
+
+The `ros_comm_tools` stack currently comprises the following package(s):
+
+- **add_topic_tools**: 
+  - **Nodes**:
+    - **Triggered Publisher**: Subscribe to a topic and republish its content to another topic upon a user-defined trigger, such as pressing a button.
+
+More packages and nodes will be added to this stack in the future to further enhance its capabilities.
 
 ## Features
 
-- **Triggered Republishing**: Subscribe to a topic and republish its content to another topic upon a user-defined trigger, such as pressing a button.
+- **Triggered Republishing**: As part of the `add_topic_tools` package, you can use the `Triggered Publisher` node to subscribe to a `sensor_msgs/Image` topic and republish its content based on manual keyboard triggers.
 
 ## Prerequisites
 
 - ROS Noetic (though it might work with other ROS versions, it's only been tested on Noetic)
-- `sensor_msgs` package for handling `Image` messages.
 
 ## Installation
 
@@ -41,22 +50,22 @@ This ROS package provides a set of communication tools that allow for advanced t
     roscore
     ```
 
-2. Run the triggered publisher node:
+2. Run the `Triggered Publisher` node from the `add_topic_tools` package:
 
     ```bash
-    rosrun ros_comm_tools triggered_publisher.py
+    rosrun add_topic_tools triggered_publisher.py
     ```
 
 3. Follow the prompts to trigger republishing of messages.
 
 ## Parameters
-The triggered publisher node supports the following ROS parameters:
+The `Triggered Publisher` node from the `add_topic_tools` package supports the following ROS parameters:
 
 
 - `~input_topic` : Name of the topic to subscribe to. Default: `/camera/image_raw`
 - `~output_topic` : Name of the topic to publish messages to. Default: `/camera/image_raw`
 
-Parameters can be set via the command line using rosparam or through a ROS launch file.
+Parameters can be set via the command line using rosparam, through a ROS launch file, or as command line parameters when running the node through `rosrun`.
 
 ## Contributing
 Feel free to open issues or pull requests if you want to improve the package or add new functionalities.
